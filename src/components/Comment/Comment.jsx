@@ -1,30 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getAuthor } from "../../services/authorService";
 
-const Comment = () => {
+const Comment = ({ comment }) => {
+  const [author, setAuthor] = useState({});
+
+  useEffect(() => {
+    
+    receiveAuthor();
+  }, []);
+
+  const receiveAuthor = async () => {
+    const response = await getAuthor(comment.authorId);
+    setAuthor(response);
+  };
   return (
-    <div className="tm-comment tm-mb-45">
-      <figure className="tm-comment-figure">
-        <img
-          src="img/comment-1.jpg"
-          alt="Image"
-          className="mb-2 rounded-circle img-thumbnail"
-        />
-        <figcaption className="tm-color-primary text-center">Mark Sonny</figcaption>
-      </figure>
-      <div>
-        <p>
-          Praesent aliquam ex vel lectus ornare tritique. Nunc et eros quis enim
-          feugiat tincidunt et vitae dui. Nullam consectetur justo ac ex laoreet
-          rhoncus. Nunc id leo pretium, faucibus sapien vel, euismod turpis.
-        </p>
-        <div className="d-flex justify-content-between">
-          <a href="#" className="tm-color-primary">
-            REPLY
-          </a>
-          <span className="tm-color-primary">June 14, 2020</span>
+    <>
+      {author?.id && (
+        <div className="tm-comment tm-mb-45">
+          <figure className="tm-comment-figure">
+            <img
+              src={author.image}
+              alt="Image"
+              className="mb-2 rounded-circle img-thumbnail"
+              style={{width:"80px", height:"80px", objectFit:"cover"}}
+            />
+            <figcaption className="tm-color-primary text-center">
+              {author.name}
+            </figcaption>
+          </figure>
+          <div>
+            <p>{comment.text}</p>
+            <div className="d-flex justify-content-between">
+              <a href="#" className="tm-color-primary">
+                REPLY
+              </a>
+              <span className="tm-color-primary mx-5">{comment.date}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

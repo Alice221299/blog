@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { getCategories } from '../../services/categoriesService'
 
 const Article = ({article}) => {
+    const [categories, setCategories] = useState([])
+    useEffect(() => {
+        obtainCategories()
+    }, [])
+
+    const obtainCategories = async () => {
+        const response = await getCategories()
+        const categoriesArticle =  response.filter(category => article.category_article.find(element => element.categoryId === category.id))
+        setCategories(categoriesArticle)
+    }
     const navigate = useNavigate()
     const handleClick = () => {
         navigate(`/new/${article.id}`)
@@ -20,7 +31,7 @@ const Article = ({article}) => {
             {article.text}
         </p>
         <div className="d-flex justify-content-between tm-pt-45">
-            <span className="tm-color-primary">Travel . Events</span>
+            <span className="tm-color-primary">{categories.map((category, index) => (<p key={index}>{category.name}</p>))}</span>
             <span className="tm-color-primary">{article.date}</span>
         </div>
         <hr/>

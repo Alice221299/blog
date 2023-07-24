@@ -11,7 +11,6 @@ import { getArticle } from '../../services/articleService'
 const NewPost = () => {
     const [info, setInfo] = useState({})
     const {articleId} = useParams()
-    console.log(articleId);
     useEffect(() => {
         const getInfo = async () => {
             const response = await getArticle(articleId)
@@ -32,7 +31,7 @@ const NewPost = () => {
                     <div className="col-lg-8 tm-post-col">
                         <div className="tm-post-full"> 
                             <PostInfo info={info}/>
-                            <Comments/>
+                            <Comments data={info.comments}/>
                         </div>
                     </div>
                 </div>
