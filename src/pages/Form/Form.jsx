@@ -56,7 +56,7 @@ const Form = () => {
               class="form-control mr-0 ml-auto"
               name="image"
               id="image"
-              type="image"
+              type="url"
               required
             />
           </div>
