@@ -1,19 +1,21 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Article = ({article}) => {
+    const navigate = useNavigate()
     const handleClick = () => {
-        
+        navigate(`/new/${article.id}`)
     }
   return (
     <article className="col-12 col-md-6 tm-post" onClick={handleClick}>
         <hr className="tm-hr-primary"/>
-        <a href="post.html" className="effect-lily tm-post-link tm-pt-60">
+        <span className="effect-lily tm-post-link tm-pt-60">
             <div className="tm-post-link-inner">
                 <img src={article.image} alt="Image" className="img-fluid"/>                            
             </div>
             {article.isImportant && <span className="position-absolute tm-new-badge">Destacado</span>}
             <h2 className="tm-pt-30 tm-color-primary tm-post-title">{article.title}</h2>
-        </a>                    
+        </span>                    
         <p className="tm-pt-30">
             {article.text}
         </p>
