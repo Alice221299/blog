@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Article = ({article}) => {
+    const handleClick = () => {
+        
+    }
   return (
-    <article className="col-12 col-md-6 tm-post">
+    <article className="col-12 col-md-6 tm-post" onClick={handleClick}>
         <hr className="tm-hr-primary"/>
         <a href="post.html" className="effect-lily tm-post-link tm-pt-60">
             <div className="tm-post-link-inner">

@@ -32,7 +32,7 @@ const goToForm = () => {
                     </NavLink></li>
                     <li className="tm-nav-item"><NavLink to="form" className="tm-nav-link">
                         <i className="fas fa-pen"></i>
-                        New Post
+                        Nuevo Post
                     </NavLink></li>
                     <li className="tm-nav-item"><NavLink to="/" className="tm-nav-link">
                         <i className="fas fa-users"></i>
