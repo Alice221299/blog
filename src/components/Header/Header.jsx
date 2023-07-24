@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Header = () => {
     const [isToggle, setIsToggle] = useState(false)
 
 const toggleNavigation = () => {
     setIsToggle(!isToggle)
+}
+
+const navigate = useNavigate()
+
+const goToForm = () => {
+    navigate("form")
 }
 
   return (
@@ -24,9 +30,9 @@ const toggleNavigation = () => {
                         <i className="fas fa-home"></i>
                         Inicio
                     </NavLink></li>
-                    <li className="tm-nav-item"><NavLink to="/" className="tm-nav-link">
+                    <li className="tm-nav-item"><NavLink to="form" className="tm-nav-link">
                         <i className="fas fa-pen"></i>
-                        Post
+                        New Post
                     </NavLink></li>
                     <li className="tm-nav-item"><NavLink to="/" className="tm-nav-link">
                         <i className="fas fa-users"></i>
