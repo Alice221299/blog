@@ -1,4 +1,4 @@
-const URL_BASE = "http://localhost:3000"
+const URL_BASE = "http://localhost:5000"
 
 export const endpoints = {
     articles: `${URL_BASE}/articles`,
